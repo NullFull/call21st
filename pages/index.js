@@ -42,10 +42,7 @@ export default () => {
 
             <section className={style.odd}>
                 <div className={layout.container}>
-                    <h3>&ldquo;동의합니다&rdquo;</h3>
-                    <div>
-                        <Responses />
-                    </div>
+                    <Responses />
                 </div>
             </section>
 
