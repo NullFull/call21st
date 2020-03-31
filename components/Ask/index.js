@@ -3,7 +3,13 @@ import fetch from 'isomorphic-unfetch'
 import FindByName from 'components/Ask/FindByName'
 import FindByRegion from 'components/Ask/FindByRegion'
 import CandidatesContext from 'components/Ask/CandidatesContext'
+import client from 'utils/client'
 import style from './index.styl'
+
+
+const initial = {
+    candidates: []
+}
 
 
 const reducer = (state, action) => {
@@ -39,10 +45,6 @@ const reducer = (state, action) => {
 
 
 const useCandidates = () => {
-    const initial = {
-        candidates: []
-    }
-
     const [state, dispatch] = React.useReducer(reducer, initial)
 
     const actions = {
@@ -57,8 +59,12 @@ const useCandidates = () => {
             const data = await response.json()
             actions.SET(data)
         },
-        byName: name => {
-
+        byName: async name => {
+            const response = await client().post(`/api/candidates/_search`, {
+                q: name
+            })
+            const payload = await response.json()
+            actions.SET(payload.data)
         }
     }
 
@@ -73,8 +79,6 @@ const useCandidates = () => {
 const Candidates = () => {
     const { candidates, actions } = React.useContext(CandidatesContext)
 
-    console.log(candidates)
-
     if (candidates.length < 1) {
         return (
             <div className={style.candidates}>
@@ -87,20 +91,17 @@ const Candidates = () => {
         <div className={style.candidates}>
             <table>
                 <thead>
-                <tr>
-                    <td>
-                        <div>
-                            전체선택
-                        </div>
-                        <div>
-                            <input
-                                type="checkbox"
-                                checked={candidates.every(candidate => candidate.checked)}
-                                onChange={e => actions.TOGGLE_ALL(e.target.checked)}
-                            />
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    checked={candidates.every(candidate => candidate.checked)}
+                                    onChange={e => actions.TOGGLE_ALL(e.target.checked)}
+                                />
+                            </div>
+                        </td>
+                    </tr>
                 </thead>
                 <tbody>
                 {candidates.map(candidate => (
@@ -126,8 +127,11 @@ const Candidates = () => {
 export default () => {
     const { candidates, fetchCandidates, actions } = useCandidates()
 
-    const ask = () => {
-        alert('질문이 전송되었습니다.')
+    const ask = async () => {
+        const content = '후보님의 생각이 궁금합니다.'
+        await client().sendRequest(content, candidates.map(candidate => candidate.id))
+
+        alert('문의가 전송되었습니다.')
     }
 
     return (
