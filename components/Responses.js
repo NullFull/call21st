@@ -1,124 +1,55 @@
 import React from 'react'
-import cx from 'classnames'
+import client from 'utils/client'
 import style from './Responses.styl'
 
 
-const CongressMember = ({member}) => (
+const Response = ({member, choice}) => (
     <div className={style.member}>
         <h3 className={style.name}>{member.name}</h3>
         <p className={style.party}>{member.party}</p>
         <p className={style.region}>{member.region}</p>
-        <div className={style.responses}>
-            <ul>
-                <li><span className={member.response[1] ? style.true : style.false} /></li>
-                <li><span className={member.response[2] ? style.true : style.false} /></li>
-                <li><span className={member.response[3] ? style.true : style.false} /></li>
-            </ul>
-        </div>
     </div>
 )
 
 
 export default () => {
-    const congressMembers = [{
-        id: 1,
-        name: `김의원`,
-        party: `미솔라시당`,
-        region: `서울시 머하구 내가갑`,
-        response: {
-            1: true,
-            2: true,
-            3: true
+    const [agrees, setAgrees] = React.useState([])
+    const [disagrees, setDisagrees] = React.useState([])
+
+    React.useEffect(() => {
+        const fetchResponses = async () => {
+            const response = await client().get(`/api/responses`)
+            const {data} = await response.json()
+
+            setAgrees(data.agreed)
+            setDisagrees(data.disagreed)
         }
-    }, {
-        id: 2,
-        name: `강의원`,
-        party: `솔파미래당`,
-        region: `서울시 머하구 너가을`,
-        response: {
-            1: true,
-            2: true,
-            3: true
-        }
-    }, {
-        id: 3,
-        name: `창의력`,
-        party: `바닥났당`,
-        region: `비례대표`,
-        response: {
-            1: true,
-            2: true,
-            3: true
-        }
-    }, {
-        id: 4,
-        name: `김의원`,
-        party: `미솔라시당`,
-        region: `서울시 머하구 내가갑`,
-        response: {
-            1: true,
-            2: true,
-            3: true
-        }
-    }, {
-        id: 5,
-        name: `강의원`,
-        party: `솔파미래당`,
-        region: `서울시 머하구 너가을`,
-        response: {
-            1: true,
-            2: true,
-            3: false
-        }
-    }, {
-        id: 6,
-        name: `창의력`,
-        party: `바닥났당`,
-        region: `비례대표`,
-        response: {
-            1: true,
-            2: true,
-            3: false
-        }
-    }, {
-        id: 7,
-        name: `김의원`,
-        party: `미솔라시당`,
-        region: `서울시 머하구 내가갑`,
-        response: {
-            1: true,
-            2: false,
-            3: false
-        }
-    }, {
-        id: 8,
-        name: `강의원`,
-        party: `솔파미래당`,
-        region: `서울시 머하구 너가을`,
-        response: {
-            1: true,
-            2: false,
-            3: false
-        }
-    }, {
-        id: 9,
-        name: `창의력`,
-        party: `바닥났당`,
-        region: `비례대표`,
-        response: {
-            1: true,
-            2: false,
-            3: false
-        }
-    }]
+        fetchResponses()
+    }, [])
 
     return (
-        <ul style={{display: 'flex', flexWrap: 'wrap'}}>
-            {congressMembers.map(member => (
-                <li key={`member-${member.id}`} style={{padding: '5px 0'}}>
-                    <CongressMember member={member} />
-                </li>
-            ))}
-        </ul>
+        <div>
+            <div>
+                <h3 className={style.title}>&ldquo;동의합니다&rdquo;</h3>
+                <ul style={{display: 'flex', flexWrap: 'wrap'}}>
+                    {agrees.map(response => (
+                        <li key={`agree-${response.id}`} style={{padding: '5px 0'}}>
+                            <Response member={response.candidate} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div>
+                <h3 className={style.title}>&ldquo;동의하지 않습니다&rdquo;</h3>
+                <ul style={{display: 'flex', flexWrap: 'wrap'}}>
+                    {disagrees.map(response => (
+                        <li key={`disagree-${response.id}`} style={{padding: '5px 0'}}>
+                            <Response member={response.candidate} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
     )
 }
