@@ -69,9 +69,9 @@ export default () => {
                     </div>
                     <div className={style.credit}>
                         <ul>
-                            <li>강간죄개정연대</li>
+                            <li>‘강간죄’개정을위한연대회의</li>
+                            <li>셰도우핀즈</li>
                             <li>널채움</li>
-                            <li>섀도우핀즈</li>
                         </ul>
                     </div>
                 </div>
