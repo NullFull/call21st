@@ -4,7 +4,7 @@ const withStylus = require('@zeit/next-stylus')
 
 let config = {
     webpack: config => {
-        config.resolve.alias['components'] = path.join(__dirname, 'components')
+        config.resolve.modules.push(path.join(__dirname))
         return config
     }
 }
