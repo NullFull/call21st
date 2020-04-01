@@ -11,5 +11,8 @@
     "react-select": "^3.1.0",
     "react-ticker": "^1.2.2",
     "stylus": "^0.54.7"
+  },
+  "devDependencies": {
+    "now": "^17.1.1"
   }
 }
