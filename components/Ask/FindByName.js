@@ -7,6 +7,10 @@ const FindByName = ({onSubmit}) => {
 
     const handleKeyPress = e => {
         if (e.keyCode === 13) {
+            if(q.length < 1) {
+                alert('검색은 한글자 이상 입력해야 합니다.')
+                return
+            }
             onSubmit(q)
         }
     }
