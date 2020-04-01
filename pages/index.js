@@ -20,6 +20,7 @@ export default () => {
             <div style={{textAlign: 'right'}}>
                 <h3>#CALL21ST <button>공유</button></h3>
             </div>
+            <hr />
             <section className={cx(style.odd, style.lead)}>
                 <div className={layout.container}>
                     <h2>나는 오늘 ‘성평등’에 투표합니다.</h2>
