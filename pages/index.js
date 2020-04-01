@@ -18,7 +18,7 @@ export default () => {
                 <title>#21대 국회에 요구한다</title>
             </Head>
             <div style={{textAlign: 'right'}}>
-                <h3>#CALL21ST <button>공유</button></h3>
+                <h3>#CALL21ST</h3>
             </div>
             <section className={cx(style.odd, style.lead)}>
                 <div className={layout.container}>
@@ -29,11 +29,11 @@ export default () => {
 
                     <p>당신의 작은 참여가 성평등한 미래를 만듭니다. 지금 후보에게 질문을 보내보세요.</p>
 
-                    <div>
-                        <button>후보에게 질문하기</button>
-                        |
-                        <button>답변보기</button>
-                    </div>
+                    {/*<div>*/}
+                    {/*    <button>후보에게 질문하기</button>*/}
+                    {/*    |*/}
+                    {/*    <button>답변보기</button>*/}
+                    {/*</div>*/}
 
                     {/*<p>*/}
                     {/*    가해자대신 변명해주는 법 아닌 가해자를 제대로 처벌하는 법<br/>*/}
