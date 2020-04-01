@@ -29,27 +29,31 @@ export default () => {
 
     return (
         <div>
-            <div>
-                <h3 className={style.title}>&ldquo;동의합니다&rdquo;</h3>
-                <ul style={{display: 'flex', flexWrap: 'wrap'}}>
-                    {agrees.map(response => (
-                        <li key={`agree-${response.id}`} style={{padding: '5px 0'}}>
-                            <Response member={response.candidate} />
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {agrees.length > 0 &&
+                <div>
+                    <h3 className={style.title}>&ldquo;동의합니다&rdquo;</h3>
+                    <ul className={style.list}>
+                        {agrees.map(response => (
+                            <li key={`agree-${response.id}`} style={{padding: '5px 0'}}>
+                                <Response member={response.candidate}/>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            }
 
-            <div>
-                <h3 className={style.title}>&ldquo;동의하지 않습니다&rdquo;</h3>
-                <ul style={{display: 'flex', flexWrap: 'wrap'}}>
-                    {disagrees.map(response => (
-                        <li key={`disagree-${response.id}`} style={{padding: '5px 0'}}>
-                            <Response member={response.candidate} />
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {disagrees.length > 0 &&
+                <div>
+                    <h3 className={style.title}>&ldquo;동의하지 않습니다&rdquo;</h3>
+                    <ul className={style.list}>
+                        {disagrees.map(response => (
+                            <li key={`disagree-${response.id}`} style={{padding: '5px 0'}}>
+                                <Response member={response.candidate} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            }
         </div>
     )
 }
