@@ -1,4 +1,6 @@
 import getDB from 'stores/_db'
+import firestore from '@google-cloud/firestore'
+
 
 export default {
     all: async () => {
@@ -12,5 +14,13 @@ export default {
         })
 
         return stats
+    },
+
+    increment: async key => {
+        const query = await getDB()
+            .doc(`counter/${key}`)
+            .update({
+                count: firestore.FieldValue.increment(1)
+            })
     }
 }

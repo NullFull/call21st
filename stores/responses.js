@@ -1,18 +1,27 @@
 import getDB from 'stores/_db'
+import statsStore from 'stores/stats'
 
 
 export default {
     create: async (candidateId, choice) => {
         const {default: candidate} = await import(`public/candidates/${candidateId}.json`)
 
-        await getDB()
+        const db = getDB()
+        const doc = db
             .doc(`responses/${candidateId}`)
-            .set({
+
+        const exists = (await doc.get()).exists
+
+        await doc.set({
                 choice,
                 candidate,
             }, {
                 merge: true
             })
+
+        if (!exists) {
+            await statsStore.increment('responses')
+        }
     },
 
     list: async () => {
