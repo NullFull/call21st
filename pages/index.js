@@ -2,6 +2,7 @@ import React from 'react'
 import cx from 'classnames'
 
 import Ask from 'components/Ask'
+import Stats from 'components/Stats'
 import Events from 'components/Events'
 import Responses from 'components/Responses'
 
@@ -48,7 +49,7 @@ export default () => {
 
             <section className={style.even}>
                 <div className={layout.container}>
-                    <h3></h3>
+                    <Stats />
                 </div>
             </section>
 
