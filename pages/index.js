@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import cx from 'classnames'
 
 import Ask from 'components/Ask'
@@ -13,17 +14,35 @@ import style from './index.styl'
 export default () => {
     return (
         <>
+            <Head>
+                <title>#21대 국회에 요구한다</title>
+            </Head>
+            <div style={{textAlign: 'right'}}>
+                <h3>#CALL21ST <button>공유</button></h3>
+            </div>
             <section className={cx(style.odd, style.lead)}>
                 <div className={layout.container}>
                     <h2>나는 오늘 ‘동의’에 투표합니다.</h2>
                     <h1><span>강간죄 구성요건을</span> <span>‘동의’ 여부로 바꾸는 데 찬성하십니까?</span></h1>
-                    <p>#미투 운동 비난·조롱하고 텔레그램 성착취방 26만 명 이용하는 강간문화, 제21대 국회는 바꿀 수 있습니까?</p>
-                    <p>
-                        가해자대신 변명해주는 법 아닌 가해자를 제대로 처벌하는 법<br/>
-                        피해자다움 판단하려는 법 아닌 피해자의 인권을 보장하는 법<br/>
-                        성폭력 판단기준을 ‘폭행 ̇협박’ 아닌 ‘동의’ 여부로 바꾸는 강간죄 개정,
-                    </p>
-                    <p>성평등 사회를 만들 제21대 국회의원은 누구입니까?</p>
+
+                    <p>텔레그램 성착취방 26만 명 이용, 성폭력 해도 쉽게 풀려나고 용서받는 강간문화, 비난·조롱받으며 찬밥신세된 미투 법안들, 21대 국회는 바꿀 수 있습니까?</p>
+
+                    <p>당신의 작은 참여가 성평등한 미래를 만듭니다. 지금 후보에게 질문을 보내보세요.</p>
+
+                    <div>
+                        <button>후보에게 질문하기</button>
+                        |
+                        <button>답변보기</button>
+                    </div>
+
+                    {/*<p>*/}
+                    {/*    가해자대신 변명해주는 법 아닌 가해자를 제대로 처벌하는 법<br/>*/}
+                    {/*    피해자다움 판단하려는 법 아닌 피해자의 인권을 보장하는 법<br/>*/}
+                    {/*    성폭력 판단기준을 ‘폭행 ̇협박’ 아닌 ‘동의’ 여부로 바꾸는 강간죄 개정,*/}
+                    {/*</p>*/}
+                    {/*<p>성평등 사회를 만들 제21대 국회의원은 누구입니까?</p>*/}
+
+
                     {/*<h1><strong>20대 국회는 공범</strong>이었습니다. 21대 국회는 어떻습니까?</h1>*/}
                     {/*<div className={style.questions}>*/}
                     {/*    <ul>*/}
