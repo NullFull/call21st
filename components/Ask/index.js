@@ -137,8 +137,12 @@ export default () => {
     return (
         <div>
             <div>
-                <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)}/>
-                <FindByName onSubmit={name => fetchCandidates.byName(name)}/>
+                <div style={{padding: '2px 0 2px 0'}}>
+                    <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)}/>
+                </div>
+                <div style={{padding: '2px 0 2px 0'}}>
+                    <FindByName onSubmit={name => fetchCandidates.byName(name)}/>
+                </div>
             </div>
 
             <div>
