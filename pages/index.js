@@ -36,7 +36,7 @@ export default () => {
                 <h3>
                     <a href="https://call21st.works/" alt="call21st 홈페이지 메인 바로가기">
                         #CALL21ST
-                        <img src="/public/images/logo.svg"/>
+                        <img src="/images/logo.svg"/>
                     </a>
                     <span>21대 국회의원 후보자에게 묻습니다</span>
                 </h3>
