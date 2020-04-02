@@ -24,7 +24,7 @@ export default () => {
                     site_name: `후보는 강간죄 개정에 동의하십니까?`,
                     description: `당신의 작은 참여가 성평등한 미래를 만듭니다. 지금 후보에게 질문을 보내보세요.`,
                     images: [{
-                        url: `https://call21st.works/ogp.png`
+                        url: `https://call21st.works/images/ogp.png`
                     }]
                 }}
                 twitter={{
