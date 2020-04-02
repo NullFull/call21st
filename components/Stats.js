@@ -31,7 +31,7 @@ export default () => {
     return (
         <div className={style.stats}>
             {loaded &&
-                <p>지금까지 <strong>{stats.requests}번의 질문</strong>과 <strong>{stats.responses}번의 응답</strong>이 있었습니다.</p>
+                <p>지금까지 {stats.targets}명의 후보에게 <strong>{stats.requests}번의 질문</strong>과 <strong>{stats.responses}번의 응답</strong>이 있었습니다.</p>
             }
         </div>
     )
