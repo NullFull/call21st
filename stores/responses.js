@@ -1,5 +1,6 @@
 import getDB from 'stores/_db'
 import statsStore from 'stores/stats'
+import firestore from '@google-cloud/firestore'
 
 
 export default {
@@ -15,6 +16,7 @@ export default {
         await doc.set({
                 choice,
                 candidate,
+                created: firestore.FieldValue.serverTimestamp(),
             }, {
                 merge: true
             })

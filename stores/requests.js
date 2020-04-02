@@ -14,6 +14,7 @@ export default {
         const created = await db.collection('requests').add({
             candidate: candidateId,
             content: content,
+            created: firestore.FieldValue.serverTimestamp(),
         })
 
         await statsStore.increment('requests')
