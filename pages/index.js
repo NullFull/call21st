@@ -25,10 +25,14 @@ export default () => {
                 }}
             />
 
-            <div style={{textAlign: 'right'}}>
-                <h3>#CALL21ST</h3>
+            <div className={layout.logo}>
+                <h3>
+                    #CALL21ST
+                    <img src="../static/images/logo.svg"/>
+                    <span>21대 국회의원 후보자에게 묻습니다</span>
+                    </h3>
             </div>
-
+            <hr style={{margin: '0', background: '#f7f7f7'}} />
             <section className={cx(style.odd, style.lead)}>
                 <div className={layout.container}>
                     <h2>나는 오늘 ‘성평등’에 투표합니다.</h2>

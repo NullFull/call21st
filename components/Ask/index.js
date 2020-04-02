@@ -98,7 +98,8 @@ const Candidates = () => {
                                     type="checkbox"
                                     checked={candidates.every(candidate => candidate.checked)}
                                     onChange={e => actions.TOGGLE_ALL(e.target.checked)}
-                                />
+                                /> 
+                                <span>전체 선택하기</span>
                             </div>
                         </td>
                     </tr>
@@ -112,9 +113,8 @@ const Candidates = () => {
                                 checked={candidate.checked}
                                 onChange={() => actions.TOGGLE_ITEM(candidate)}
                             />
+                            <span>{candidate.name}</span> <span>{candidate.party}</span>
                         </td>
-                        <td>{candidate.name}</td>
-                        <td>{candidate.party}</td>
                     </tr>
                 ))}
                 </tbody>
