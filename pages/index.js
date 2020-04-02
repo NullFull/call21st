@@ -18,10 +18,10 @@ export default () => {
                 <title>21대 국회에 요구한다</title>
             </Head>
 
-            <div style={{textAlign: 'right'}}>
+            <div className={style.logo}>
                 <h3>
                     #CALL21ST
-                    <img src="/static/images/logo.svg" href="#" />
+                    <img src="../static/images/logo.svg"/>
                     <span>21대 국회의원 후보자에게 묻습니다</span>
                     </h3>
             </div>
