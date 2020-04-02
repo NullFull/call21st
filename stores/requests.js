@@ -1,5 +1,6 @@
 import getDB from './_db'
 import statsStore from 'stores/stats'
+import firestore from '@google-cloud/firestore'
 
 
 export default {
@@ -25,6 +26,12 @@ export default {
         if (!exists) {
             await statsStore.increment('targets')
         }
+
+        await getDB()
+            .doc(`requests-counter/${candidateId}`)
+            .update({
+                count: firestore.FieldValue.increment(1)
+            })
 
         return created.id
     }
