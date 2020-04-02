@@ -18,19 +18,21 @@ export default {
 
         await statsStore.increment('requests')
 
-        const exists = (await db.collection('requests')
+        const exists = await db.collection('requests')
             .where('candidate', '==', candidateId)
             .limit(1)
-            .get()).exists
+            .get()
 
-        if (!exists) {
+        if (!exists.docs.length < 1) {
             await statsStore.increment('targets')
         }
 
         // await getDB()
         //     .doc(`requests-counter/${candidateId}`)
-        //     .update({
+        //     .set({
         //         count: firestore.FieldValue.increment(1)
+        //     }, {
+        //         merge: true
         //     })
 
         return created.id
