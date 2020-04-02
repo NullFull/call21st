@@ -4,4 +4,4 @@ import Router from 'next/router'
 import withGA from 'next-ga'
 
 
-export default withGA('G-FFWVL85Y3T', Router)(App)
+export default withGA('UA-143097345-3', Router)(App)
