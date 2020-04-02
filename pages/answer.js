@@ -20,7 +20,7 @@ export default ({url: {query}}) => {
     }
 
     return (
-        <div>
+        <div style={{color: '#463E39'}}>
             <div className={layout.logo}>
                 <h3>
                     #CALL21ST
