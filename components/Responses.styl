@@ -7,21 +7,45 @@
   justify-content center
 
 .member
+  position relative
+  margin-right 8px
   text-align center
-  width 200px
+  width 156px
+
   h3
-    padding 2px
+    position relative
+    width 100px
+    height 100px
+    margin 0 auto
+    padding 16px
+    border-top 2px solid #5A4D46
+    border-right 2px solid #5A4D46
+    border-left 2px solid #5A4D46
+    border-radius 50px
+    background #FFC700
+
   p
+    position absolute
     margin 0
-    padding 0
+    width 156px
+    height 28px
+    border-right 2px solid #5A4D46
+    border-left 2px solid #5A4D46
+    border-radius 4px
+    line-height 2.2em
+    background white
   .name
     font-size 1.0rem
-    margin 2px 0
-  .party, .region
+  .party
+    top 44px
     font-size 0.8rem
-    opacity 0.8
+    border-top 2px solid #5A4D46
+    border-bottom 1px dashed #5A4D46
   .region
-    opacity 0.5
+    top 75px
+    border-bottom 2px solid #5A4D46
+    font-size 0.75rem
+
   .responses
     ul
       display flex
@@ -39,3 +63,4 @@
       background #C91226
     .null
       background #F4CC1A
+

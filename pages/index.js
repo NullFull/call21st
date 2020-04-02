@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import {NextSeo} from 'next-seo'
 import cx from 'classnames'
 
 import Ask from 'components/Ask'
@@ -14,27 +15,47 @@ import style from './index.styl'
 export default () => {
     return (
         <>
-            <Head>
-                <title>#21대 국회에 요구한다</title>
-            </Head>
-            <div style={{textAlign: 'right'}}>
-                <h3>#CALL21ST <img src="" href="#" /><button>공유</button></h3>
+            <NextSeo
+                title="21대 국회에 요구한다"
+                description=""
+                openGraph={{
+                    type: `website`,
+                    url: `https://call21st.works`,
+                    site_name: `후보는 강간죄 개정에 동의하십니까?`,
+                    description: `당신의 작은 참여가 성평등한 미래를 만듭니다. 지금 후보에게 질문을 보내보세요.`,
+                    images: [{
+                        url: `https://call21st.works/images/ogp.png`
+                    }]
+                }}
+                twitter={{
+                    cardType: 'summary_large_image'
+                }}
+            />
+
+            <div className={layout.logo}>
+                <h3>
+                    <a href="https://call21st.works/" alt="call21st 홈페이지 메인 바로가기">
+                        #CALL21ST
+                        <img src="/images/logo.svg"/>
+                    </a>
+                    <span>21대 국회의원 후보자에게 묻습니다</span>
+                </h3>
             </div>
-            <hr />
+            <hr style={{margin: '0', background: '#f7f7f7'}} />
             <section className={cx(style.odd, style.lead)}>
                 <div className={layout.container}>
                     <h2>나는 오늘 ‘성평등’에 투표합니다.</h2>
-                    <h1><span>강간죄 판단 기준을</span> <span>‘동의’ 여부로 바꾸는 데 찬성하십니까?</span></h1>
+                    <h1><span>강간죄 판단 기준을</span> <span>‘동의’ 여부로 바꾸는 데</span> <span>찬성하십니까?</span></h1>
 
-                    <p>텔레그램 성착취방 26만 명 이용, 성폭력 해도 쉽게 풀려나고 용서받는 강간문화, 비난·조롱받으며 찬밥신세된 미투 법안들, 21대 국회는 바꿀 수 있습니까?</p>
+                    <p>텔레그램 성착취방 26만 명 이용,<br/> 성폭력 해도 쉽게 풀려나고 용서받는 강간문화,<br/> 비난·조롱받으며 찬밥신세된 미투 법안들,<br/> 21대 국회는 바꿀 수 있습니까?</p>
 
                     <p>당신의 작은 참여가 성평등한 미래를 만듭니다. 지금 후보에게 질문을 보내보세요.</p>
 
-                    <div>
-                        <button>후보에게 질문하기</button>
-                        |
-                        <button>답변보기</button>
-                    </div>
+                    {/*<div>*/}
+                    {/*    <button>후보에게 질문하기</button>*/}
+                    {/*    |*/}
+                    {/*    <button>답변보기</button>*/}
+                    {/*</div>*/}
 
                     {/*<p>*/}
                     {/*    가해자대신 변명해주는 법 아닌 가해자를 제대로 처벌하는 법<br/>*/}

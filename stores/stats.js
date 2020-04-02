@@ -16,6 +16,17 @@ export default {
         return stats
     },
 
+    candidates: async candidateId => {
+        const query = await getDB()
+            .doc(`requests-counter/${candidateId}`)
+            .get()
+
+        const { count } = query.data()
+        return {
+            requests: count
+        }
+    },
+
     increment: async key => {
         const query = await getDB()
             .doc(`counter/${key}`)

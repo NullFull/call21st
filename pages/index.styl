@@ -6,13 +6,13 @@
   color color-primary
 
 .even
-  background #5A4D46
+  background color-secondary
   color #FFFFFF
 
 .lead
-  background url('') no-repeat cover
   h1
     margin 10px 0
+    line-height 1.2
   h2
     background color-strong
     color color-primary
@@ -22,6 +22,7 @@
     margin 5px 0
     font-size 1.1rem
 
+  
 .questions
   display flex
   justify-content center
@@ -36,4 +37,7 @@
     display flex
     justify-content center
     li
-      padding 5px
+      padding-right 4px
+      word-break keep-all
+    li:last-child
+      padding-right 0

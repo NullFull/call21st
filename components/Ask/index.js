@@ -108,25 +108,25 @@ const Candidates = () => {
                                     type="checkbox"
                                     checked={candidates.every(candidate => candidate.checked)}
                                     onChange={e => actions.TOGGLE_ALL(e.target.checked)}
-                                /> 전체 선택하기
+                                /> 
+                                <span>전체 선택하기</span>
                             </div>
                         </td>
                     </tr>
                 </thead>
                 <tbody>
-                    {candidates.map(candidate => (
-                        <tr key={candidate.id}>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    checked={candidate.checked}
-                                    onChange={() => actions.TOGGLE_ITEM(candidate)}
-                                />
-                            </td>
-                            <td>{candidate.name}</td>
-                            <td>{candidate.party}</td>
-                        </tr>
-                    ))}
+                {candidates.map(candidate => (
+                    <tr key={candidate.id}>
+                        <td>
+                            <input
+                                type="checkbox"
+                                checked={candidate.checked}
+                                onChange={() => actions.TOGGLE_ITEM(candidate)}
+                            />
+                            <span>{candidate.name}</span> <span>{candidate.party}</span>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
         </div>
@@ -138,6 +138,10 @@ export default () => {
     const { candidates, isLoaded, fetchCandidates, actions } = useCandidates()
 
     const ask = async () => {
+        if (candidates.length < 1) {
+            alert('먼저 문의를 보낼 후보를 선택해주세요')
+            return
+        }
         const content = '후보님의 생각이 궁금합니다.'
         await client().sendRequest(content, candidates.map(candidate => candidate.id))
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import Ticker from 'react-ticker'
-import layout from 'pages/layout.styl'
 import style from './Event.styl'
 
 
@@ -12,18 +11,25 @@ const Event = ({event}) => (
 )
 
 
-const Quote = ({quote}) => (
+const Reference = ({reference}) => (
     <div className={style.event}>
-        <h3>&ldquo;{quote.quote}&rdquo;</h3>
-        <p>&mdash; {quote.event}</p>
+        <h3>{reference.content}</h3>
+        <p>&mdash; {reference.from}</p>
     </div>
 )
 
 
-const Raw = ({raw}) => (
+const Law = ({law}) => (
     <div className={style.event}>
-        <h3>{raw.title}</h3>
-        <p>&mdash; {raw.status}</p>
+        <h3>{law.title} &mdash; {law.status}</h3>
+    </div>
+)
+
+
+const Quote = ({quote}) => (
+    <div className={style.event}>
+        <h3>&ldquo;{quote.quote}&rdquo;</h3>
+        <p>&mdash; {quote.event}</p>
     </div>
 )
 
@@ -55,7 +61,39 @@ export default () => {
         event: `강간 무죄, 술을 이용한 포장마차 성폭력 사건(1심)`
     }]
 
-    const raws = [{
+    const references = [{
+        content: `성폭력 피해사례 총 1,030명 중 직접적인 폭행·협박 없이 발생한 성폭력 피해사례는 71.4%(735명)에 달하고, (...) 실제로 처벌 가능한 성폭력 피해사례는 28.6%보다 훨씬 낮을 수밖에 없다.`,
+        from: `‘강간죄’개정을위한연대회의(2019)`
+    }, {
+        content: `우리나라의 성범죄 처벌은 아직도 가해가 중심적입니다. 성범죄의 성립조 건이 '비동의'가 아닌 '항거 불능할 정도로 폭행과 협박'으로 이를 피해자가 직접 증명해야 합니다.`,
+        from: `청와대 국민청원 264,102명(2019)`
+    }, {
+        content: `여전히 한국에서는 폭행·협박 없는 성폭력의 경우 범죄의 피해자로 인정 받기도 어렵고 더 나쁜 경우 무고의 피의자로 의심되거나 처벌받은 우려도 배제하기 어렵다.`,
+        from: `여성가족부(2018)`
+    }, {
+        content: `성폭력범죄 피의자 중에서 억울하게 무고 당한 사례는 극히 적다. (...) 성폭력범죄와 성폭력무고죄로 기소된 인원수를 비교할 경우 0.78% 수준에 불과하다.`,
+        from: `대검찰청, 한국여성정책연구원(2019)`
+    }, {
+        content: `폭행·협박이나 항거불능 상태의 이용에 의하지 않은 간음이라 하더라도 실제 피해자의 성적 자기결정권이 침해되는 경우가 충분히 있을 수 있다.`,
+        from: `대법관 민유숙, 대법관 노정희(2019)`
+    }, {
+        content: `성폭력범죄의 보호법익인 성적 자기결정권의 핵심이 피해자의 자유로운 의사에 따른 성적행위 여부에 대한 결정, 즉 동의에 있다는 점을 감안하면 보호법익의 측면에 서 보더라도 유형력 모델보다는 동의 모델이 더 적합하다.`,
+        from: `형사정책연구원(2019)`
+    }, {
+        content: `각 분야에서의 경력이 10년 이상 되는 경찰, 교수, 검사, 판사. 변호사, NGO 등 총 48명이 조사에 참여하였다. (...) 응답자의 54.2%는 ‘폭행협박의 유형력 요건을 제거하고, 비동의 요건으로 대체해야 한다’는 의견을 제시하 였다.`,
+        from: `여성가족부(2018)`
+    }, {
+        content: `강간죄를 규정한 형법 제297조에서 '폭행 또는 협박'이라는 기준보다 '피해자의 자발적 동의 없이'라는 기준을 넣어 이를 우선시하도록 수정하고 부 부간 강간도 범죄로 규정할 것`,
+        from: `UN 여성차별철폐위원회(2018)`
+    }, {
+        content: `합의란 행위와, 행위의 방식, 행위가 일어난 시간에 대한 자발적 동의이다. (...) 성행위에 관여한 모든 사람은 그 또는 그녀가 상대방과 성적 행위 에 대한 적극적 합의를 이루었다는 것을 보장해야 할 의무가 있다.`,
+        from: `캐나다 온타리오 법원(2016)`
+    }, {
+        content: `적극적 합의란 상호적 성적 행위를 할 때 명시적으로, 의식이 있을 때, 충분한 정보와 이해를 바탕으로, 평등하게, 모든 과정에서 항상 이루어지는 합의를 뜻합니다.`,
+        from: `한국성폭력상담소(2019)`
+    }]
+
+    const laws = [{
         title: `폭행이나 협박 또는 사람의 의사에 반하여 해당하는 사람을 강간한 자는 3년 이상의 유기징역에 처한다`,
         status: `계류`,
     }, {
@@ -83,23 +121,7 @@ export default () => {
 
     return (
         <div className={style.events}>
-            {/*<div className={layout.container}>*/}
-            {/*    <h3>제20대 국회 법안</h3>*/}
-            {/*</div>*/}
-            <Ticker speed={4} direction={'toRight'}>
-                {(props) => {
-                    return (
-                        <ul style={{display: 'flex'}}>
-                            {raws.map((raw, i) =>
-                                <li key={`raw-${i}`} style={{width: '320px'}}>
-                                    <Raw raw={raw} />
-                                </li>
-                            )}
-                        </ul>
-                    )
-                }}
-            </Ticker>
-            <Ticker speed={2}>
+            <Ticker speed={3}>
                 {(props) => {
                     return (
                         <ul style={{display: 'flex'}}>
@@ -112,6 +134,35 @@ export default () => {
                     )
                 }}
             </Ticker>
+
+            <Ticker speed={1} direction={'toRight'}>
+                {(props) => {
+                    return (
+                        <ul style={{display: 'flex'}}>
+                            {laws.map((law, i) =>
+                                <li key={`law-${i}`} style={{width: '360px'}}>
+                                    <Law law={law} />
+                                </li>
+                            )}
+                        </ul>
+                    )
+                }}
+            </Ticker>
+
+            <Ticker speed={2}>
+                {(props) => {
+                    return (
+                        <ul style={{display: 'flex'}}>
+                            {references.map((reference, i) =>
+                                <li key={`refs-${i}`} style={{width: '360px', maxWidth: '100%'}}>
+                                    <Reference reference={reference} />
+                                </li>
+                            )}
+                        </ul>
+                    )
+                }}
+            </Ticker>
+
             {/*<Ticker direction={'toRight'} speed={2}>*/}
             {/*    {(props) => {*/}
             {/*        return (*/}
@@ -125,7 +176,6 @@ export default () => {
             {/*        )*/}
             {/*    }}*/}
             {/*</Ticker>*/}
-
         </div>
     )
 }

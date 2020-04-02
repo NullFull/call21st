@@ -1,5 +1,6 @@
 import getDB from './_db'
 import statsStore from 'stores/stats'
+import firestore from '@google-cloud/firestore'
 
 
 export default {
@@ -13,18 +14,27 @@ export default {
         const created = await db.collection('requests').add({
             candidate: candidateId,
             content: content,
+            created: firestore.FieldValue.serverTimestamp(),
         })
 
         await statsStore.increment('requests')
 
-        const exists = (await db.collection('requests')
+        const exists = await db.collection('requests')
             .where('candidate', '==', candidateId)
             .limit(1)
-            .get()).exists
+            .get()
 
-        if (!exists) {
+        if (!exists.docs.length < 1) {
             await statsStore.increment('targets')
         }
+
+        await getDB()
+            .doc(`requests-counter/${candidateId}`)
+            .set({
+                count: firestore.FieldValue.increment(1)
+            }, {
+                merge: true
+            })
 
         return created.id
     }
