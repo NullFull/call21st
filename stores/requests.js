@@ -27,11 +27,11 @@ export default {
             await statsStore.increment('targets')
         }
 
-        await getDB()
-            .doc(`requests-counter/${candidateId}`)
-            .update({
-                count: firestore.FieldValue.increment(1)
-            })
+        // await getDB()
+        //     .doc(`requests-counter/${candidateId}`)
+        //     .update({
+        //         count: firestore.FieldValue.increment(1)
+        //     })
 
         return created.id
     }
