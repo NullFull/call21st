@@ -21,6 +21,13 @@ export default ({url: {query}}) => {
 
     return (
         <div className={layout.container}>
+            <div className={layout.logo}>
+                <h3>
+                    #CALL21ST
+                    <img src="../static/images/logo.svg"/>
+                    <span>21대 국회의원 후보자에게 묻습니다</span>
+                    </h3>
+            </div>
             <div>
                 <h3>강간죄 구성 요건을 '동의'여부로 바꾸는데 동의하십니까?</h3>
                 <div>
