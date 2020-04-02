@@ -19,9 +19,13 @@ export default () => {
             </Head>
 
             <div style={{textAlign: 'right'}}>
-                <h3>#CALL21ST</h3>
+                <h3>
+                    #CALL21ST
+                    <img src="/static/images/logo.svg" href="#" />
+                    <span>21대 국회의원 후보자에게 묻습니다</span>
+                    </h3>
             </div>
-
+            <hr />
             <section className={cx(style.odd, style.lead)}>
                 <div className={layout.container}>
                     <h2>나는 오늘 ‘성평등’에 투표합니다.</h2>
