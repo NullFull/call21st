@@ -98,7 +98,7 @@ const Candidates = () => {
                                     type="checkbox"
                                     checked={candidates.every(candidate => candidate.checked)}
                                     onChange={e => actions.TOGGLE_ALL(e.target.checked)}
-                                />
+                                /> 전체 선택하기
                             </div>
                         </td>
                     </tr>
