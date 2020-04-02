@@ -7,7 +7,7 @@ const Response = ({member, choice}) => (
     <div className={style.member}>
         <h3 className={style.name}>{member.name}</h3>
         <p className={style.party}>{member.party}</p>
-        <p className={style.region}>{member.region.name}</p>
+        <p className={style.region}>{member.region === '비례' ? '비례대표' : member.region.name}</p>
     </div>
 )
 
