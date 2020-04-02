@@ -24,7 +24,7 @@ export default ({url: {query}}) => {
             <div className={layout.logo}>
                 <h3>
                     #CALL21ST
-                    <img src="../static/images/logo.svg"/>
+                    <img src="/images/logo.svg"/>
                     <span>21대 국회의원 후보자에게 묻습니다</span>
                     </h3>
             </div>
