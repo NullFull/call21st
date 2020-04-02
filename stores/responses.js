@@ -32,5 +32,15 @@ export default {
             .get()
 
         return query.docs.map(item => ({...item.data(), id: item.id}))
+    },
+
+    get: async candidateId => {
+        const query = await getDB()
+            .doc(`responses/${candidateId}`)
+            .get()
+
+        const response = query.data()
+        
+        return response ? response.choice : null
     }
 }
