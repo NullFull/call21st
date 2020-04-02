@@ -8,7 +8,8 @@ import style from './index.styl'
 
 
 const initial = {
-    candidates: []
+    candidates: [],
+    isLoaded: false
 }
 
 
@@ -20,7 +21,8 @@ const reducer = (state, action) => {
                 candidates: action.payload.map(candidate => {
                     candidate.checked = false
                     return candidate
-                })
+                }),
+                isLoaded: true
             }
         case 'TOGGLE_ALL':
             return {
@@ -70,6 +72,7 @@ const useCandidates = () => {
 
     return {
         candidates: state.candidates,
+        isLoaded: state.isLoaded,
         fetchCandidates,
         actions
     }
@@ -77,9 +80,16 @@ const useCandidates = () => {
 
 
 const Candidates = () => {
-    const { candidates, actions } = React.useContext(CandidatesContext)
+    const { candidates, isLoaded, actions } = React.useContext(CandidatesContext)
 
     if (candidates.length < 1) {
+        if (isLoaded) {
+            return (
+                <div className={style.candidates}>
+                    <p className={style.message}>검색결과가 없습니다.</p>
+                </div>
+            )
+        }
         return (
             <div className={style.candidates}>
                 <p className={style.message}>지역구를 선택하거나 이름을 입력해주세요</p>
@@ -98,25 +108,25 @@ const Candidates = () => {
                                     type="checkbox"
                                     checked={candidates.every(candidate => candidate.checked)}
                                     onChange={e => actions.TOGGLE_ALL(e.target.checked)}
-                                />
+                                /> 전체 선택하기
                             </div>
                         </td>
                     </tr>
                 </thead>
                 <tbody>
-                {candidates.map(candidate => (
-                    <tr key={candidate.id}>
-                        <td>
-                            <input
-                                type="checkbox"
-                                checked={candidate.checked}
-                                onChange={() => actions.TOGGLE_ITEM(candidate)}
-                            />
-                        </td>
-                        <td>{candidate.name}</td>
-                        <td>{candidate.party}</td>
-                    </tr>
-                ))}
+                    {candidates.map(candidate => (
+                        <tr key={candidate.id}>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    checked={candidate.checked}
+                                    onChange={() => actions.TOGGLE_ITEM(candidate)}
+                                />
+                            </td>
+                            <td>{candidate.name}</td>
+                            <td>{candidate.party}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
@@ -125,7 +135,7 @@ const Candidates = () => {
 
 
 export default () => {
-    const { candidates, fetchCandidates, actions } = useCandidates()
+    const { candidates, isLoaded, fetchCandidates, actions } = useCandidates()
 
     const ask = async () => {
         const content = '후보님의 생각이 궁금합니다.'
@@ -137,12 +147,16 @@ export default () => {
     return (
         <div>
             <div>
-                <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)}/>
-                <FindByName onSubmit={name => fetchCandidates.byName(name)}/>
+                <div style={{ padding: '2px 0 2px 0' }}>
+                    <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)} />
+                </div>
+                <div style={{ padding: '2px 0 2px 0' }}>
+                    <FindByName onSubmit={name => fetchCandidates.byName(name)} />
+                </div>
             </div>
 
             <div>
-                <CandidatesContext.Provider value={{candidates, actions}}>
+                <CandidatesContext.Provider value={{ candidates, isLoaded, actions }}>
                     <Candidates />
                 </CandidatesContext.Provider>
             </div>
