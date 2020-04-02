@@ -19,6 +19,13 @@ const Reference = ({reference}) => (
 )
 
 
+const Law = ({law}) => (
+    <div className={style.event}>
+        <h3>{law.title} &mdash; {law.status}</h3>
+    </div>
+)
+
+
 const Quote = ({quote}) => (
     <div className={style.event}>
         <h3>&ldquo;{quote.quote}&rdquo;</h3>
@@ -85,11 +92,36 @@ export default () => {
         content: `적극적 합의란 상호적 성적 행위를 할 때 명시적으로, 의식이 있을 때, 충분한 정보와 이해를 바탕으로, 평등하게, 모든 과정에서 항상 이루어지는 합의를 뜻합니다.`,
         from: `한국성폭력상담소(2019)`
     }]
-    
+
+    const laws = [{
+        title: `폭행이나 협박 또는 사람의 의사에 반하여 해당하는 사람을 강간한 자는 3년 이상의 유기징역에 처한다`,
+        status: `계류`,
+    }, {
+        title: `상대방의 명백한 동의가 없는 상태에서 사람을 간음한 사람은 5년 이상 의 유기징역에 처한다`,
+        status: `계류`,
+    }, {
+        title: `상대방의 의사에 반하여 사람을 간음한 사람은 3년 이상의 유기징역에 처한다`,
+        status: `계류`,
+    }, {
+        title: `동의 없이 사람을 간음한 사람은 3년 이하의 징역 또는 1천만원 이하의 벌금에 처한다`,
+        status: `계류`,
+    }, {
+        title: `폭행이나 협박 또는 상대방의 동의 없이 사람을 강간한 자는 3년 이상의 유기징역에 처한다`,
+        status: `계류`,
+    }, {
+        title: `상대방의 부동의 의사에 반하여 사람을 간음한 자는 3년 이상의 유기징역에 처한다`,
+        status: `계류`,
+    }, {
+        title: `사람의 명백한 거부의사표시에 반하여 강간한 사람은 1년 이상의 유기징역에 처한다`,
+        status: `계류`,
+    }, {
+        title: `동의 없이 사람을 간음한 사람은 3년 이상의 유기징역에 처한다`,
+        status: `계류`,
+    }]
 
     return (
         <div className={style.events}>
-            <Ticker speed={2}>
+            <Ticker speed={3}>
                 {(props) => {
                     return (
                         <ul style={{display: 'flex'}}>
@@ -102,7 +134,22 @@ export default () => {
                     )
                 }}
             </Ticker>
-            <Ticker speed={2} direction={'toRight'}>
+
+            <Ticker speed={1} direction={'toRight'}>
+                {(props) => {
+                    return (
+                        <ul style={{display: 'flex'}}>
+                            {laws.map((law, i) =>
+                                <li key={`law-${i}`} style={{width: '360px'}}>
+                                    <Law law={law} />
+                                </li>
+                            )}
+                        </ul>
+                    )
+                }}
+            </Ticker>
+
+            <Ticker speed={2}>
                 {(props) => {
                     return (
                         <ul style={{display: 'flex'}}>
@@ -115,6 +162,7 @@ export default () => {
                     )
                 }}
             </Ticker>
+
             {/*<Ticker direction={'toRight'} speed={2}>*/}
             {/*    {(props) => {*/}
             {/*        return (*/}
@@ -128,7 +176,6 @@ export default () => {
             {/*        )*/}
             {/*    }}*/}
             {/*</Ticker>*/}
-
         </div>
     )
 }

@@ -128,6 +128,10 @@ export default () => {
     const { candidates, fetchCandidates, actions } = useCandidates()
 
     const ask = async () => {
+        if (candidates.length < 1) {
+            alert('먼저 문의를 보낼 후보를 선택해주세요')
+            return
+        }
         const content = '후보님의 생각이 궁금합니다.'
         await client().sendRequest(content, candidates.map(candidate => candidate.id))
 

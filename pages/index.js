@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import {NextSeo} from 'next-seo'
 import cx from 'classnames'
 
 import Ask from 'components/Ask'
@@ -14,9 +15,15 @@ import style from './index.styl'
 export default () => {
     return (
         <>
-            <Head>
-                <title>21대 국회에 요구한다</title>
-            </Head>
+            <NextSeo
+                title="21대 국회에 요구한다"
+                description=""
+                openGraph={{
+                    type: `website`,
+                    url: `https://call21st.works`,
+                    site_name: '21대 국회에 요구한다',
+                }}
+            />
 
             <div className={layout.logo}>
                 <h3>
