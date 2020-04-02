@@ -21,7 +21,8 @@ export default () => {
                 openGraph={{
                     type: `website`,
                     url: `https://call21st.works`,
-                    site_name: '21대 국회에 요구한다',
+                    site_name: `후보는 강간죄 개정에 동의하십니까?`,
+                    description: `당신의 작은 참여가 성평등한 미래를 만듭니다. 지금 후보에게 질문을 보내보세요.`,
                     images: [{
                         url: `https://call21st.works/ogp.png`
                     }]
@@ -36,9 +37,8 @@ export default () => {
                     <a href="https://call21st.works/" alt="call21st 홈페이지 메인 바로가기">
                         #CALL21ST
                         <img src="/public/images/logo.svg"/>
-                        </a>
-                        <span>21대 국회의원 후보자에게 묻습니다</span>
-                  
+                    </a>
+                    <span>21대 국회의원 후보자에게 묻습니다</span>
                 </h3>
             </div>
             <hr style={{margin: '0', background: '#f7f7f7'}} />
