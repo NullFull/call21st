@@ -22,6 +22,12 @@ export default () => {
                     type: `website`,
                     url: `https://call21st.works`,
                     site_name: '21대 국회에 요구한다',
+                    images: [{
+                        url: `https://call21st.works/ogp.png`
+                    }]
+                }}
+                twitter={{
+                    cardType: 'summary_large_image'
                 }}
             />
 
@@ -29,7 +35,7 @@ export default () => {
                 <h3>
                     <a href="https://call21st.works/" alt="call21st 홈페이지 메인 바로가기">
                         #CALL21ST
-                        <img src="public/images/logo.svg"/>
+                        <img src="/public/images/logo.svg"/>
                         </a>
                         <span>21대 국회의원 후보자에게 묻습니다</span>
                   
