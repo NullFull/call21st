@@ -1,1 +1,1 @@
-{"id": "100137134", "city": {"code": 4400, "name": "\ucda9\uccad\ub0a8\ub3c4"}, "region": {"code": "2440202", "name": "\uacf5\uc8fc\uc2dc\ubd80\uc5ec\uad70\uccad\uc591\uad70"}, "party": "\ubbf8\ub798\ud1b5\ud569\ub2f9", "name": "\uc815\uc9c4\uc11d", "hasEmail": true}
+{"id": "100137134", "name": "\uc815\uc9c4\uc11d", "party": "\ubbf8\ub798\ud1b5\ud569\ub2f9", "city": {"name": "\ucda9\uccad\ub0a8\ub3c4"}, "region": {"name": "\uacf5\uc8fc\uc2dc\ubd80\uc5ec\uad70\uccad\uc591\uad70"}, "hasEmail": true}
