@@ -29,6 +29,7 @@ export default {
     list: async () => {
         const query = await getDB()
             .collection(`responses`)
+            .orderBy('created')
             .get()
 
         return query.docs.map(item => ({...item.data(), id: item.id}))
@@ -40,7 +41,7 @@ export default {
             .get()
 
         const response = query.data()
-        
+
         return response ? response.choice : null
     }
 }
