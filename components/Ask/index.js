@@ -7,6 +7,24 @@ import client from 'utils/client'
 import style from './index.styl'
 
 
+const NumberOfRequests = ({candidateId}) => {
+    const [n, setNumber] = React.useState('')
+
+    React.useEffect(() => {
+        const fetchRequests = async () => {
+            const response = await fetch(`/api/candidates/${candidateId}/stats`)
+            const { data } = await response.json()
+            setNumber(data.requests)
+        }
+        fetchRequests()
+    }, [])
+
+    return (
+        <>{n}{n && '회'}</>
+    )
+}
+
+
 const initial = {
     candidates: []
 }
@@ -92,28 +110,44 @@ const Candidates = () => {
             <table>
                 <thead>
                     <tr>
-                        <td>
+                        <td className={style.checkbox}>
+                            <div>전체선택</div>
                             <div>
                                 <input
                                     type="checkbox"
                                     checked={candidates.every(candidate => candidate.checked)}
                                     onChange={e => actions.TOGGLE_ALL(e.target.checked)}
-                                /> 
-                                <span>전체 선택하기</span>
+                                />
                             </div>
                         </td>
+                        <td></td>
+                        <td></td>
+                        <td className={style.count}>질문</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
                 {candidates.map(candidate => (
                     <tr key={candidate.id}>
-                        <td>
+                        <td className={style.checkbox}>
                             <input
                                 type="checkbox"
                                 checked={candidate.checked}
                                 onChange={() => actions.TOGGLE_ITEM(candidate)}
                             />
-                            <span>{candidate.name}</span> <span>{candidate.party}</span>
+                        </td>
+                        <td className={style.name}>
+                            {candidate.name}
+                        </td>
+                        <td>
+                            {candidate.party}
+                        </td>
+                        <td className={style.count}>
+                            {/*{!candidate.hasEmail && '(대기)'}*/}
+                            <NumberOfRequests candidateId={candidate.id} />
+                        </td>
+                        <td className={style.contact}>
+                            {/*{!candidate.hasEmail && '연락처 없음'}*/}
                         </td>
                     </tr>
                 ))}

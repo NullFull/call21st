@@ -2,20 +2,33 @@
 .candidates
   min-height 200px
   margin-bottom 20px
+  overflow auto
   .message
     text-align center
-  table 
-    tr
-      height 32px 
-      td
-        position relative
-        span
-          margin-left 24px
+  table
+    input[type="checkbox"]
+      width 16px
+      height 16px
+      background white
+      cursor pointer
+    td
+      padding 0 4px 0 4px
+      white-space nowrap
+      line-height 32px
+    td.checkbox
+      text-align center
+    thead
+      td.count
+        text-align center
     tbody
       tr
-        td
-          span:nth-child(2)
-            font-weight bold    
+        td.name
+          font-weight bold
+        td.count, td.contact
+          padding 0 24px 0 24px
+          text-align right
+          opacity 0.9
+          font-size 0.9rem
 
 .ask
   width 100%
@@ -23,14 +36,3 @@
   padding 12px 16px 12px 16px
   color white
   background #463e39
-
-
-input[type="checkbox"]
-  position absolute
-  top 9px
-  left 0
-  width 16px
-  height 16px
-  margin-right 8px
-  background white
-  cursor pointer
