@@ -23,7 +23,7 @@ const SentResult = ({candidate}) => {
             if (agreed !== '동의' && !candidate.hasEmail) {
                 setStatus('(대기중: 이메일오류)')
             } else {
-                setStatus('전송')
+                setStatus('정상')
             }
         }
         fetchAgreed()
