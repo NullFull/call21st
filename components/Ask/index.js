@@ -25,14 +25,13 @@ const SentResult = ({candidate}) => {
 
     React.useEffect(() => {
         const fetchEmail = async () => {
-            const data = await import(`public/candidates/${candidate.id}.json`)
-            console.log(data)
-            if (data.hasEmail || agreed === '동의') {
+            const { hasEmail } = await import(`public/candidates/${candidate.id}.json`)
+            if (hasEmail || agreed === '동의') {
                 setHasEmail(true)
             }
         }
         fetchEmail()
-    }, [])
+    }, [agreed])
 
 
 
