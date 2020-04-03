@@ -7,12 +7,13 @@ import client from 'utils/client'
 import style from './index.styl'
 
 
-const Agreed = ({candidateId}) => {
+const SentResult = ({candidate}) => {
     const [agreed, setAgreed] = React.useState('')
+    const [showEmail, setShowEmail] = React.useState('')
 
     React.useEffect(() => {
         const fetchAgreed = async () => {
-            const response = await fetch(`/api/candidates/${candidateId}/response`)
+            const response = await fetch(`/api/candidates/${candidate.id}/response`)
             const { data } = await response.json()
 
             if (data.choice === 'yes') {
@@ -22,11 +23,29 @@ const Agreed = ({candidateId}) => {
         fetchAgreed()
     }, [])
 
+    React.useEffect(() => {
+        const fetchEmail = async () => {
+            const data = await import(`public/candidates/${candidate.id}.json`)
+            if (data.hasEmail || agreed === '동의') {
+                setShowEmail(true)
+            }
+        }
+        fetchEmail()
+    }, [])
+
+
+
     return (
-        <>{agreed}</>
+        <>
+            <td className={style.agreed}>
+                <>{agreed}</>
+            </td>
+            <td className={style.contact}>
+                {showEmail ? '' : '(대기중. 이메일오류)'}
+            </td>
+        </>
     )
 }
-
 
 const NumberOfRequests = ({candidateId}) => {
     const [n, setNumber] = React.useState('')
@@ -177,14 +196,9 @@ const Candidates = () => {
                         <td className={style.count}>
                             <NumberOfRequests candidateId={candidate.id} />
                         </td>
-                        <td className={style.agreed}>
-                            <Agreed candidateId={candidate.id} />
-                        </td>
-                        <td className={style.contact}>
-                            {!candidate.hasEmail && '(대기중. 이메일오류)'}
-                        </td>
+                        <SentResult candidate={candidate} />
                     </tr>
-                ))}
+                    ))}
                 </tbody>
             </table>
         </div>
