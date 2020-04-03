@@ -9,7 +9,7 @@ import style from './index.styl'
 
 const SentResult = ({candidate}) => {
     const [agreed, setAgreed] = React.useState('')
-    const [showEmail, setShowEmail] = React.useState('')
+    const [hasEmail, setHasEmail] = React.useState('')
 
     React.useEffect(() => {
         const fetchAgreed = async () => {
@@ -26,8 +26,9 @@ const SentResult = ({candidate}) => {
     React.useEffect(() => {
         const fetchEmail = async () => {
             const data = await import(`public/candidates/${candidate.id}.json`)
+            console.log(data)
             if (data.hasEmail || agreed === '동의') {
-                setShowEmail(true)
+                setHasEmail(true)
             }
         }
         fetchEmail()
@@ -41,7 +42,7 @@ const SentResult = ({candidate}) => {
                 <>{agreed}</>
             </td>
             <td className={style.contact}>
-                {showEmail ? '' : '(대기중. 이메일오류)'}
+                {hasEmail ? '' : '(대기중. 이메일오류)'}
             </td>
         </>
     )
