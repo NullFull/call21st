@@ -142,7 +142,7 @@ const Candidates = () => {
                 <thead>
                     <tr>
                         <td className={style.checkbox}>
-                            <div>전체선택</div>
+                            <div className={style.all}>전체선택</div>
                             <div>
                                 <input
                                     type="checkbox"
