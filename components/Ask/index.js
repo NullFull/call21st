@@ -47,7 +47,8 @@ const NumberOfRequests = ({candidateId}) => {
 
 
 const initial = {
-    candidates: []
+    candidates: [],
+    isLoaded: false
 }
 
 
@@ -59,7 +60,8 @@ const reducer = (state, action) => {
                 candidates: action.payload.map(candidate => {
                     candidate.checked = false
                     return candidate
-                })
+                }),
+                isLoaded: true
             }
         case 'TOGGLE_ALL':
             return {
@@ -109,6 +111,7 @@ const useCandidates = () => {
 
     return {
         candidates: state.candidates,
+        isLoaded: state.isLoaded,
         fetchCandidates,
         actions
     }
@@ -116,9 +119,16 @@ const useCandidates = () => {
 
 
 const Candidates = () => {
-    const { candidates, actions } = React.useContext(CandidatesContext)
+    const { candidates, isLoaded, actions } = React.useContext(CandidatesContext)
 
     if (candidates.length < 1) {
+        if (isLoaded) {
+            return (
+                <div className={style.candidates}>
+                    <p className={style.message}>검색결과가 없습니다.</p>
+                </div>
+            )
+        }
         return (
             <div className={style.candidates}>
                 <p className={style.message}>지역구를 선택하거나 이름을 입력해주세요</p>
@@ -183,7 +193,7 @@ const Candidates = () => {
 
 
 export default () => {
-    const { candidates, fetchCandidates, actions } = useCandidates()
+    const { candidates, isLoaded, fetchCandidates, actions } = useCandidates()
 
     const ask = async () => {
         if (candidates.length < 1) {
@@ -213,16 +223,16 @@ export default () => {
             </ul>
 
             <div>
-                <div style={{padding: '2px 0 2px 0'}}>
-                    <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)}/>
+                <div style={{ padding: '2px 0 2px 0' }}>
+                    <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)} />
                 </div>
-                <div style={{padding: '2px 0 2px 0'}}>
-                    <FindByName onSubmit={name => fetchCandidates.byName(name)}/>
+                <div style={{ padding: '2px 0 2px 0' }}>
+                    <FindByName onSubmit={name => fetchCandidates.byName(name)} />
                 </div>
             </div>
 
             <div>
-                <CandidatesContext.Provider value={{candidates, actions}}>
+                <CandidatesContext.Provider value={{ candidates, isLoaded, actions }}>
                     <Candidates />
                 </CandidatesContext.Provider>
             </div>
