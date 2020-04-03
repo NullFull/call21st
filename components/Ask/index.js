@@ -7,6 +7,27 @@ import client from 'utils/client'
 import style from './index.styl'
 
 
+const Agreed = ({candidateId}) => {
+    const [agreed, setAgreed] = React.useState('')
+
+    React.useEffect(() => {
+        const fetchAgreed = async () => {
+            const response = await fetch(`/api/candidates/${candidateId}/response`)
+            const { data } = await response.json()
+
+            if (data.choice === 'yes') {
+                setAgreed('동의')
+            }
+        }
+        fetchAgreed()
+    }, [])
+
+    return (
+        <>{agreed}</>
+    )
+}
+
+
 const NumberOfRequests = ({candidateId}) => {
     const [n, setNumber] = React.useState('')
 
@@ -123,6 +144,7 @@ const Candidates = () => {
                         <td></td>
                         <td></td>
                         <td className={style.count}>질문</td>
+                        <td className={style.agreed}>응답</td>
                         <td></td>
                     </tr>
                 </thead>
@@ -143,11 +165,13 @@ const Candidates = () => {
                             {candidate.party}
                         </td>
                         <td className={style.count}>
-                            {/*{!candidate.hasEmail && '(대기)'}*/}
                             <NumberOfRequests candidateId={candidate.id} />
                         </td>
+                        <td className={style.agreed}>
+                            <Agreed candidateId={candidate.id} />
+                        </td>
                         <td className={style.contact}>
-                            {/*{!candidate.hasEmail && '연락처 없음'}*/}
+                            {/*{!candidate.hasEmail && '(이메일 없음)'}*/}
                         </td>
                     </tr>
                 ))}
