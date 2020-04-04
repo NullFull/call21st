@@ -12,3 +12,30 @@ input
     border-radius 4px
     margin-right 8px
 
+
+$borderWidth = 8px
+.loader
+    background-color rgba(0,0,0,0.75)
+    position fixed
+    left 0
+    right 0
+    top 0
+    bottom 0
+    display flex
+    align-items center
+    justify-content center
+    div
+        width $borderWidth*6
+        height $borderWidth*6
+        animation load 1.1s infinite linear
+        border-top $borderWidth solid rgba(255, 255, 255, 0.2)
+        border-right $borderWidth solid rgba(255, 255, 255, 0.2)
+        border-bottom $borderWidth solid rgba(255, 255, 255, 0.2)
+        border-left $borderWidth solid #fff
+        border-radius 50%
+
+@keyframes load
+  0%
+    transform rotate(0deg)
+  100%
+    transform rotate(360deg)
