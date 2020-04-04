@@ -211,7 +211,7 @@ export default () => {
         const content = '후보님의 생각이 궁금합니다.'
         await client().sendRequest(content, candidates.map(candidate => candidate.id))
 
-        alert('문의가 예약 되었습니다.')
+        alert('질문이 등록 되었습니다.\n연락처가 존재하는 후보에게는 질문이 메일로 전달됩니다.')
     }
 
     return (
