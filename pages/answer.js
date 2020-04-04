@@ -13,7 +13,7 @@ const LoadingSpinner = () => {
 
 export default ({url: {query}}) => {
     const [choice, setChoice] = React.useState(null)
-    const [isLoaded, setIsLoaded] = React.useState(false)
+    const [loading, setLoading] = React.useState(false)
 
     const response = async () => {
         if (!choice) {
@@ -22,7 +22,7 @@ export default ({url: {query}}) => {
         }
 
         try {
-            setIsLoaded(true)
+            setLoading(true)
             await client().post(`/api/responses`, {
                 token: query.token,
                 choice
@@ -31,7 +31,7 @@ export default ({url: {query}}) => {
         } catch (e) {
             alert('오류가 발생했습니다. 다시 시도해주세요.')
         } finally {
-            setIsLoaded(false)
+            setLoading(false)
         }
     }
 
@@ -73,7 +73,7 @@ export default ({url: {query}}) => {
                 <div style={{marginTop: '20px'}}>
                     <button className={style.submit} onClick={() => response()}>저장</button>
                 </div>
-                {isLoaded ? <LoadingSpinner /> : <></> }
+                {loading && <LoadingSpinner />}
             </div>
             
         </div>
