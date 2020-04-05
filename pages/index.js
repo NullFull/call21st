@@ -83,7 +83,10 @@ export default () => {
 
             <section className={style.odd}>
                 <div className={layout.container}>
-                    <Responses />
+                    <h3>후보에게 질문하기</h3>
+                    <div>
+                        <Ask />
+                    </div>
                 </div>
             </section>
 
@@ -95,10 +98,7 @@ export default () => {
 
             <section className={style.odd}>
                 <div className={layout.container}>
-                    <h3>후보에게 질문하기</h3>
-                    <div>
-                        <Ask />
-                    </div>
+                    <Responses />
                 </div>
             </section>
 
