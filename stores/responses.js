@@ -11,8 +11,6 @@ export default {
         const doc = db
             .doc(`responses/${candidateId}`)
 
-        const exists = (await doc.get()).exists
-
         await doc.set({
                 choice,
                 candidate,
@@ -21,6 +19,7 @@ export default {
                 merge: true
             })
 
+        const exists = (await doc.get()).exists
         if (!exists) {
             await statsStore.increment('responses')
         }
