@@ -18,8 +18,7 @@ export default () => {
 
     React.useEffect(() => {
         const fetchResponses = async () => {
-            const response = await client().get(`/api/responses`)
-            const {data} = await response.json()
+            const { data } = await client().get(`/api/responses`)
 
             setAgrees(data.agreed)
             setDisagrees(data.disagreed)

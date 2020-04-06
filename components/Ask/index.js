@@ -57,8 +57,7 @@ const useCandidates = () => {
 
     const fetchCandidates = {  // TODO : overload
         byRegion: async (city, region) => {
-            const response = await client().get(`/cities/${city.value}/regions/${region.value}/candidates.json`)
-            const data = await response.json()
+            const { data } = await client().get(`/cities/${city.value}/regions/${region.value}/candidates.json`)
             actions.SET(data)
         },
         byName: async name => {

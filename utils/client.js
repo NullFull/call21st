@@ -1,8 +1,10 @@
+import fetch from 'isomorphic-unfetch'
 
 
 class Client {
     async get(url) {
-        return await fetch(url)
+        const response = await fetch(url)
+        return await response.json()
     }
 
     async post(url, data) {

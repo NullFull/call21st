@@ -4,28 +4,7 @@ import client from 'utils/client'
 import style from './Candidates.styl'
 
 
-const SentResult = ({candidate}) => {
-    const [agreed, setAgreed] = React.useState('')
-    const [status, setStatus] = React.useState('')
-
-    React.useEffect(() => {
-        const fetchAgreed = async () => {
-            const response = await client().get(`/api/candidates/${candidate.id}/response`)
-            const { data } = await response.json()
-
-            if (data.choice === 'yes') {
-                setAgreed('동의')
-            }
-
-            if (agreed !== '동의' && !candidate.hasEmail) {
-                setStatus('(대기중: 이메일오류)')
-            } else {
-                setStatus('정상')
-            }
-        }
-        fetchAgreed()
-    }, [])
-
+const SentResult = ({candidateId}) => {
     return (
         <>
             <td className={style.agreed}>
@@ -44,15 +23,71 @@ const NumberOfRequests = ({candidateId}) => {
 
     React.useEffect(() => {
         const fetchRequests = async () => {
-            const response = await client().get(`/api/candidates/${candidateId}/stats`)
-            const { data } = await response.json()
+            const { data } =
             setNumber(data.requests)
         }
         fetchRequests()
     }, [])
 
+    return n && `${n}회`
+}
+
+
+const Candidate = ({candidate}) => {
+    const { actions } = React.useContext(CandidatesContext)
+
+    const [agreed, setAgreed] = React.useState('')
+    const [status, setStatus] = React.useState('')
+    const [count, setCount] = React.useState('')
+
+    React.useEffect(() => {
+        const fetchAgreed = async () => {
+            const [{data: info}, {data: response}, {data: stats}] = await Promise.all([
+                client().get(`/api/candidates/${candidate.id}`),
+                client().get(`/api/candidates/${candidate.id}/response`),
+                client().get(`/api/candidates/${candidate.id}/stats`)
+            ])
+
+            setCount(stats.requests)
+
+            if (response.choice === 'yes') {
+                setAgreed('동의')
+            }
+
+            if (agreed !== '동의' && !info.email) {
+                setStatus('(대기중: 이메일오류)')
+            } else {
+                setStatus('정상')
+            }
+        }
+        fetchAgreed()
+    }, [])
+
     return (
-        <>{n}{n && '회'}</>
+        <tr key={candidate.id}>
+            <td className={style.checkbox}>
+                <input
+                    type="checkbox"
+                    checked={candidate.checked}
+                    onChange={() => actions.TOGGLE_ITEM(candidate)}
+                />
+            </td>
+            <td className={style.name}>
+                {candidate.name}
+            </td>
+            <td>
+                {candidate.party}
+            </td>
+            <td className={style.count}>
+                {count && `${count}회`}
+            </td>
+            <td className={style.agreed}>
+                {agreed}
+            </td>
+            <td className={style.status}>
+                {status}
+            </td>
+        </tr>
     )
 }
 
@@ -98,27 +133,9 @@ const Candidates = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {candidates.map(candidate => (
-                    <tr key={candidate.id}>
-                        <td className={style.checkbox}>
-                            <input
-                                type="checkbox"
-                                checked={candidate.checked}
-                                onChange={() => actions.TOGGLE_ITEM(candidate)}
-                            />
-                        </td>
-                        <td className={style.name}>
-                            {candidate.name}
-                        </td>
-                        <td>
-                            {candidate.party}
-                        </td>
-                        <td className={style.count}>
-                            <NumberOfRequests candidateId={candidate.id} />
-                        </td>
-                        <SentResult candidate={candidate} />
-                    </tr>
-                ))}
+                    {candidates.map(candidate => (
+                        <Candidate key={`candidate-${candidate.id}`} candidate={candidate} />
+                    ))}
                 </tbody>
             </table>
         </div>
