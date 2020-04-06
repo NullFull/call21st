@@ -4,35 +4,6 @@ import client from 'utils/client'
 import style from './Candidates.styl'
 
 
-const SentResult = ({candidateId}) => {
-    return (
-        <>
-            <td className={style.agreed}>
-                {agreed}
-            </td>
-            <td className={style.status}>
-                {status}
-            </td>
-        </>
-    )
-}
-
-
-const NumberOfRequests = ({candidateId}) => {
-    const [n, setNumber] = React.useState('')
-
-    React.useEffect(() => {
-        const fetchRequests = async () => {
-            const { data } =
-            setNumber(data.requests)
-        }
-        fetchRequests()
-    }, [])
-
-    return n && `${n}회`
-}
-
-
 const Candidate = ({candidate}) => {
     const { actions } = React.useContext(CandidatesContext)
 
