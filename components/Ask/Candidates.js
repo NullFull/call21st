@@ -1,4 +1,5 @@
 import React from 'react'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 import CandidatesContext from 'components/Ask/CandidatesContext'
 import client from 'utils/client'
 import style from './Candidates.styl'
@@ -64,21 +65,27 @@ const Candidate = ({candidate}) => {
 
 
 const Candidates = () => {
-    const { candidates, isLoaded, actions } = React.useContext(CandidatesContext)
+    const STATUSES = CandidatesContext.STATUSES
+    const { candidates, status, actions } = React.useContext(CandidatesContext)
+
+    if (status === STATUSES.LOADING) {
+        return (
+            <div className={style.candidates}>
+                <div className={style.message}>
+                    <ScaleLoader color="#5A4D46" />
+                </div>
+            </div>
+        )
+    }
 
     if (candidates.length < 1) {
-        if (isLoaded) {
-            return (
-                <div className={style.candidates}>
-                    <p className={style.message}>검색결과가 없습니다.</p>
-                </div>
-            )
-        }
-        return (
+        return status === STATUSES.LOADED ?
+            <div className={style.candidates}>
+                <p className={style.message}>검색결과가 없습니다.</p>
+            </div> :
             <div className={style.candidates}>
                 <p className={style.message}>지역구를 선택하거나 이름을 입력해주세요</p>
             </div>
-        )
     }
 
     return (

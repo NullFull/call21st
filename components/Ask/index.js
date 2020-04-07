@@ -10,14 +10,21 @@ import client from 'utils/client'
 import style from './index.styl'
 
 
+const STATUSES = CandidatesContext.STATUSES
+
 const initial = {
     candidates: [],
-    isLoaded: false
+    status: STATUSES.WAITING
 }
 
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case 'FETCH':
+            return {
+                ...state,
+                status: STATUSES.LOADING
+            }
         case 'SET':
             return {
                 ...state,
@@ -25,7 +32,7 @@ const reducer = (state, action) => {
                     candidate.checked = false
                     return candidate
                 }),
-                isLoaded: true
+                status: STATUSES.LOADED
             }
         case 'TOGGLE_ALL':
             return {
@@ -53,6 +60,7 @@ const useCandidates = () => {
     const [state, dispatch] = React.useReducer(reducer, initial)
 
     const actions = {
+        FETCH: () => dispatch({type: 'FETCH'}),
         SET: data => dispatch({type: 'SET', payload: data}),
         TOGGLE_ALL: setTo => dispatch({type: 'TOGGLE_ALL', payload: setTo}),
         TOGGLE_ITEM: item => dispatch({type: 'TOGGLE_ITEM', payload: item})
@@ -60,17 +68,20 @@ const useCandidates = () => {
 
     const fetchCandidates = {  // TODO : overload
         byRegion: async (city, region) => {
+            actions.FETCH()
             const response = await fetch(`/cities/${city.value}/regions/${region.value}/candidates.json`)
             const data = await response.json()
             actions.SET(data)
         },
         byName: async name => {
+            actions.FETCH()
             const { data } = await client().post(`/api/candidates/_search`, {
                 q: name
             })
             actions.SET(data)
         },
         byParty: async party => {
+            actions.FETCH()
             const response = await fetch(`/parties/${party.value}/candidates.json`)
             const data = await response.json()
             actions.SET(data)
@@ -79,7 +90,7 @@ const useCandidates = () => {
 
     return {
         candidates: state.candidates,
-        isLoaded: state.isLoaded,
+        status: state.status,
         fetchCandidates,
         actions
     }
@@ -87,7 +98,7 @@ const useCandidates = () => {
 
 
 export default () => {
-    const { candidates, isLoaded, fetchCandidates, actions } = useCandidates()
+    const { candidates, status, fetchCandidates, actions } = useCandidates()
 
     const ask = async () => {
         if (candidates.length < 1) {
@@ -96,7 +107,7 @@ export default () => {
         }
 
         const content = '후보님의 생각이 궁금합니다.'
-        await client().sendRequest(content, candidates.map(candidate => candidate.id))
+        await client().sendRequest(content, candidates.filter(c => c.checked).map(c => c.id))
 
         alert('질문이 등록 되었습니다.\n연락처가 존재하는 후보에게는 질문이 메일로 전달됩니다.')
     }
@@ -139,7 +150,7 @@ export default () => {
             </div>
 
             <div>
-                <CandidatesContext.Provider value={{ candidates, isLoaded, actions }}>
+                <CandidatesContext.Provider value={{ candidates, status, actions }}>
                     <Candidates />
                 </CandidatesContext.Provider>
             </div>
