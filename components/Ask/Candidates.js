@@ -25,10 +25,10 @@ const Candidate = ({candidate}) => {
                 setAgreed('동의')
             }
 
-            if (agreed !== '동의' && !info.email) {
-                setStatus('(대기중: 이메일오류)')
-            } else {
+            if (info.email) {
                 setStatus('정상')
+            } else {
+                setStatus(response.choice === 'yes' ? '' : '(대기중 이메일오류)')
             }
         }
         fetchAgreed()
