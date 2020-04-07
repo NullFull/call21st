@@ -19,11 +19,10 @@ class Client {
     }
 
     async sendRequest(content, to) {
-        const response = await this.post(`/api/requests`, {
+        const { data } = await this.post(`/api/requests`, {
             content, to
         })
-        const payload = await response.json()
-        return payload.data
+        return data
     }
 }
 
