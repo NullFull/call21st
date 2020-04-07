@@ -1,6 +1,9 @@
 import React from 'react'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import './tabstyle.styl'
 import FindByName from 'components/Ask/FindByName'
 import FindByRegion from 'components/Ask/FindByRegion'
+import FindByParty from 'components/Ask/FindByParty'
 import Candidates from 'components/Ask/Candidates'
 import CandidatesContext from 'components/Ask/CandidatesContext'
 import client from 'utils/client'
@@ -57,15 +60,20 @@ const useCandidates = () => {
 
     const fetchCandidates = {  // TODO : overload
         byRegion: async (city, region) => {
-            const { data } = await client().get(`/cities/${city.value}/regions/${region.value}/candidates.json`)
+            const response = await fetch(`/cities/${city.value}/regions/${region.value}/candidates.json`)
+            const data = await response.json()
             actions.SET(data)
         },
         byName: async name => {
-            const response = await client().post(`/api/candidates/_search`, {
+            const { data } = await client().post(`/api/candidates/_search`, {
                 q: name
             })
-            const payload = await response.json()
-            actions.SET(payload.data)
+            actions.SET(data)
+        },
+        byParty: async party => {
+            const response = await fetch(`/parties/${party.value}/candidates.json`)
+            const data = await response.json()
+            actions.SET(data)
         }
     }
 
@@ -86,6 +94,7 @@ export default () => {
             alert('먼저 문의를 보낼 후보를 선택해주세요')
             return
         }
+
         const content = '후보님의 생각이 궁금합니다.'
         await client().sendRequest(content, candidates.map(candidate => candidate.id))
 
@@ -104,12 +113,29 @@ export default () => {
             </ul>
 
             <div>
-                <div style={{ padding: '2px 0 2px 0' }}>
-                    <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)} />
-                </div>
-                <div style={{ padding: '2px 0 2px 0' }}>
-                    <FindByName onSubmit={name => fetchCandidates.byName(name)} />
-                </div>
+                <Tabs>
+                    <TabList>
+                        <Tab>지역구 후보 검색</Tab>
+                        <Tab>비례대표 후보 검색</Tab>
+                    </TabList>
+
+                    <TabPanel>
+                        <div className={style.input}>
+                            <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)} />
+                        </div>
+                        <div className={style.input}>
+                            <FindByName onSubmit={name => fetchCandidates.byName(name)} />
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <div className={style.input}>
+                            <FindByParty onSelect={party => fetchCandidates.byParty(party)}/>
+                        </div>
+                        <div className={style.input}>
+                            <FindByName onSubmit={name => fetchCandidates.byName(name)} />
+                        </div>
+                    </TabPanel>
+                </Tabs>
             </div>
 
             <div>
