@@ -28,7 +28,7 @@ const Candidate = ({candidate}) => {
             if (info.email) {
                 setStatus('정상')
             } else {
-                setStatus(response.choice === 'yes' ? '' : '(대기중 이메일오류)')
+                setStatus(response.choice === 'yes' ? '' : '(대기중: 이메일오류)')
             }
         }
         fetchAgreed()
