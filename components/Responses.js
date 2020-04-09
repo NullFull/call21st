@@ -28,6 +28,208 @@ export default () => {
 
     return (
         <div>
+
+                <div>
+                    <h3 className={style.title}>&ldquo;동의합니다&rdquo;</h3>
+                    <ul className={style.list}>
+                        
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>녹색당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>미래통합당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+
+                            <li style={{padding: '5px 0'}}>
+                                <div className={style.member}>
+                                    <h3 className={style.name}>세글자</h3>
+                                    <p className={style.party}>더불어민주당</p>
+                                    <p className={style.region}>순천시광양시곡성군구례군갑</p>
+                                </div>
+                            </li>
+                        
+                    </ul>
+                </div>
+
             {agrees.length > 0 &&
                 <div>
                     <h3 className={style.title}>&ldquo;동의합니다&rdquo;</h3>
