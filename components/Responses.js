@@ -28,7 +28,6 @@ export default () => {
 
     return (
         <div>
-
             {agrees.length > 0 &&
                 <div>
                     <h3 className={style.title}>&ldquo;동의합니다&rdquo;</h3>
