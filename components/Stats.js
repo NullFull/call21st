@@ -13,7 +13,7 @@ const useStats = () => {
         const fetchStats = async () => {
             const { data } = await client().get('/api/stats')
             
-            setStats({...data, requests: numberWithCommas(data.requests)})
+            setStats(data)
         }
         fetchStats()
     }, [])
@@ -24,6 +24,10 @@ const useStats = () => {
 
 export default () => {
     const stats = useStats()
+    
+    if(stats !== null) {
+        stats.requests = numberWithCommas(stats.requests)
+    }
 
     return (
         <div className={style.stats}>
