@@ -2,6 +2,9 @@ import React from 'react'
 import client from 'utils/client'
 import style from './Stats.styl'
 
+const numberWithCommas = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
 
 const useStats = () => {
     const [stats, setStats] = React.useState(null)
@@ -9,8 +12,8 @@ const useStats = () => {
     React.useEffect(() => {
         const fetchStats = async () => {
             const { data } = await client().get('/api/stats')
-
-            setStats(data)
+            
+            setStats({...data, requests: numberWithCommas(data.requests)})
         }
         fetchStats()
     }, [])
