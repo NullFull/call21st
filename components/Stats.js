@@ -32,7 +32,14 @@ export default () => {
     return (
         <div className={style.stats}>
             {stats &&
-                <p>지금까지 <strong>{stats.requests}번의 질문</strong>과 <strong>{stats.responses}명의 응답</strong>이 있었습니다.</p>
+                <>
+                    <p>
+                        1430명의 후보에게 <strong>{stats.requests}번의 질문</strong>과<br/> <strong>{stats.responses}명의 응답</strong>이 있었습니다.
+                    </p>
+                    <p>
+                        동의 의사를 표현한 후보 중 <strong>45명이 당선</strong>되었습니다.
+                    </p>
+                </>
             }
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import {NextSeo} from 'next-seo'
 import cx from 'classnames'
 
-import Ask from 'components/Ask'
+// import Ask from 'components/Ask'
 import Stats from 'components/Stats'
 import Events from 'components/Events'
 import Responses from 'components/Responses'
@@ -51,9 +51,28 @@ export default () => {
             </section>
 
             <section className={style.even}>
-                {/*<div className={layout.container}>*/}
-                    <Events />
-                {/*</div>*/}
+                <div className={layout.container}>
+                    <Stats />
+                    <p>
+                        45명의 당선자들께서 앞으로 21대 국회 의정활동시, 강간죄 개정 이슈에 지속적 관심을 가지는지, 관련 법안이 국회 법사위와 본회의 문턱을 넘을 수 있도록 힘써주시는지 지켜볼 것입니다.
+                    </p>
+                    <p>
+                        CALL21ST 캠페인의 모든 구성원은 모든 성폭력 피해자들의 훼손당한 사법적 지위가 하루라도 빨리 회복될 수 있도록 강간죄 개정 운동을 끝까지 지지/응원하며, 필요시 추가적인 후속 활동도 도모하겠습니다.
+                    </p>
+                    <p>
+                        본 사이트는 21대 국회 임기와 같이 4년동안 유지됩니다.
+                    </p>
+                </div>
+            </section>
+
+            <section className={style.odd}>
+                <div className={layout.container}>
+                    <Responses />
+                </div>
+            </section>
+
+            <section className={style.even}>
+                <Events />
             </section>
 
             <section className={style.odd}>
@@ -62,18 +81,6 @@ export default () => {
                     <div>
                         <h1 style={{textAlign: 'center'}}>지금은 질문을 보낼 수 없습니다.</h1>
                     </div>
-                </div>
-            </section>
-
-            <section className={style.even}>
-                <div className={layout.container}>
-                    <Stats />
-                </div>
-            </section>
-
-            <section className={style.odd}>
-                <div className={layout.container}>
-                    <Responses />
                 </div>
             </section>
 
