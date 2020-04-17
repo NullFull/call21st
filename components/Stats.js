@@ -34,10 +34,12 @@ export default () => {
             {stats &&
                 <>
                     <p>
-                        1430명의 후보에게 <strong>{stats.requests}번의 질문</strong>과<br/> <strong>{stats.responses}명의 응답</strong>이 있었습니다.
+                        <span>1430명의 후보에게 <strong>{stats.requests}번의 질문</strong>과 </span>
+                        <span><strong>{stats.responses}명의 응답</strong>이 있었습니다.</span>
                     </p>
                     <p>
-                        동의 의사를 표현한 후보 중 <strong>45명이 당선</strong>되었습니다.
+                        <span>찬성 의사를 표현한 후보 중 </span>
+                        <span><strong>45명이 당선</strong>되었습니다.</span>
                     </p>
                 </>
             }
