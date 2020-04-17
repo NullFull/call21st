@@ -2,7 +2,7 @@ import React from 'react'
 import {NextSeo} from 'next-seo'
 import cx from 'classnames'
 
-// import Ask from 'components/Ask'
+import Ask from 'components/Ask'
 import Stats from 'components/Stats'
 import Events from 'components/Events'
 import Responses from 'components/Responses'
@@ -78,9 +78,7 @@ export default () => {
             <section className={style.odd}>
                 <div className={layout.container}>
                     <h3>후보에게 질문하기</h3>
-                    <div>
-                        <h1 style={{textAlign: 'center'}}>지금은 질문을 보낼 수 없습니다.</h1>
-                    </div>
+                    <Ask />
                 </div>
             </section>
 

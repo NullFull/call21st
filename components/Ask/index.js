@@ -117,8 +117,7 @@ export default () => {
             <ul className={style.notice}>
                 <li>
                     <h4>
-                        공지 : 현재 후보의 공개된 이메일 정보가 오래되어 전송이 실패하는 경우가 많이 발생하고 있습니다.
-                        검색결과에 이를 표시해두고 있으니 연락처를 아시는 분은 아래 연락처로 제보를 부탁드립니다.
+                        공지 : 선거가 종료되어 더 이상 질문 메일 전송을 지원하지 않습니다.
                     </h4>
                 </li>
             </ul>
@@ -156,7 +155,7 @@ export default () => {
             </div>
 
             <div>
-                <button className={style.ask} onClick={() => ask()}>후보님의 생각이 궁금합니다.</button>
+                <button className={style.ask} disabled={true}>지금은 질문을 보낼 수 없습니다.</button>
             </div>
         </div>
     )
