@@ -1,9 +1,0 @@
-{
-  "env": {
-    "FIREBASE_PROJECT_ID": "@firebase-project-id",
-    "FIREBASE_CLIENT_ID": "@firebase-client-id",
-    "FIREBASE_PKEY_ID": "@firebase-pkey-id",
-    "FIREBASE_PKEY": "@firebase-pkey",
-    "FIREBASE_EMAIL": "@firebase-email"
-  }
-}
