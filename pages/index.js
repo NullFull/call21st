@@ -67,6 +67,72 @@ export default () => {
 
             <section className={style.odd}>
                 <div className={layout.container}>
+                    <h3>현재 발의된 법안들</h3>
+                    <div className={style.progress}>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>의안번호</th>
+                                <th>제안일자</th>
+                                <th>법안명</th>
+                                <th>발의자</th>
+                                <th>단계</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_D2P0E0S6N0M8V1R1P4L8H5K5C3T3J1">
+                                        2100245
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_D2P0E0S6N0M8V1R1P4L8H5K5C3T3J1">
+                                        2020-06-08
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_D2P0E0S6N0M8V1R1P4L8H5K5C3T3J1">
+                                        형법 일부개정법률안
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_D2P0E0S6N0M8V1R1P4L8H5K5C3T3J1">
+                                        백혜련의원 등 14인
+                                    </a>
+                                </td>
+                                <td>
+                                    위원회 심사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2E0F0C8T1D2J1S0A1P3T3M9C7T0R2">
+                                        2102898
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2E0F0C8T1D2J1S0A1P3T3M9C7T0R2">
+                                        2020-08-12
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2E0F0C8T1D2J1S0A1P3T3M9C7T0R2">
+                                        형법 일부개정법률안
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2E0F0C8T1D2J1S0A1P3T3M9C7T0R2">
+                                        류호정의원 등 13인
+                                    </a>
+                                </td>
+                                <td>
+                                    위원회 심사
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
                     <Responses />
                 </div>
             </section>
