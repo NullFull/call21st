@@ -3,9 +3,9 @@ import client from 'utils/client'
 import style from './Responses.styl'
 
 
-const Response = ({member, choice}) => (
+const Response = ({ member, proposal }) => (
     <div className={style.member}>
-        <h3 className={style.name}>{member.name}</h3>
+        <h3 className={`${style.name} ${proposal && style.proposed}`}>{member.name}</h3>
         <p className={style.party}>{member.party}</p>
         <p className={style.region}>{member.region === '비례' ? '비례대표' : member.region.name}</p>
     </div>
@@ -15,6 +15,7 @@ const Response = ({member, choice}) => (
 export default () => {
     const [agrees, setAgrees] = React.useState([])
     const [disagrees, setDisagrees] = React.useState([])
+    const [proposals, setProposals] = React.useState([])
 
     React.useEffect(() => {
         const fetchResponses = async () => {
@@ -26,16 +27,33 @@ export default () => {
         fetchResponses()
     }, [])
 
+    React.useEffect(() => {
+        const fetchProposals = async () => {
+            const { data } = await client().get(`/api/proposals`)
+
+            const list = data.proposals.slice(1).map(proposal => {
+                return { name: proposal.name, proposal: proposal.proposal }
+            })
+            setProposals(list)
+        }
+        fetchProposals()
+    }, [])
+
+
+
     return (
         <div>
             <div>
                 <h3 className={style.title}>찬성한 당선자 목록</h3>
                 <ul className={style.list}>
-                    {agrees.filter(e => e.candidate.elected).map(response => (
-                        <li key={`elected-${response.id}`} style={{padding: '5px 0'}}>
-                            <Response member={response.candidate}/>
-                        </li>
-                    ))}
+                    {agrees.filter(e => e.candidate.elected).map(response => {
+                        const proposal = proposals.find(propose => propose['name'] === response.candidate.name)
+                        return (
+                            <li key={`elected-${response.id}`} style={{ padding: '5px 0' }}>
+                                <Response member={response.candidate} proposal={proposal} />
+                            </li>
+                        )
+                    })}
                 </ul>
             </div>
 
@@ -44,8 +62,8 @@ export default () => {
                     <h3 className={style.title}>전체 찬성한 후보 목록</h3>
                     <ul className={style.list}>
                         {agrees.map(response => (
-                            <li key={`agree-${response.id}`} style={{padding: '5px 0'}}>
-                                <Response member={response.candidate}/>
+                            <li key={`agree-${response.id}`} style={{ padding: '5px 0' }}>
+                                <Response member={response.candidate} />
                             </li>
                         ))}
                     </ul>
@@ -57,7 +75,7 @@ export default () => {
                     <h3 className={style.title}>반대한 후보 목록</h3>
                     <ul className={style.list}>
                         {disagrees.map(response => (
-                            <li key={`disagree-${response.id}`} style={{padding: '5px 0'}}>
+                            <li key={`disagree-${response.id}`} style={{ padding: '5px 0' }}>
                                 <Response member={response.candidate} />
                             </li>
                         ))}
