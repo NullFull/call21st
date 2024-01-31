@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import './tabstyle.styl'
+import { StepsProvider, StepsIndicator, Steps } from 'components/lib/Steps'
 import FindByName from 'components/Ask/FindByName'
 import FindByRegion from 'components/Ask/FindByRegion'
 import FindByParty from 'components/Ask/FindByParty'
@@ -122,6 +123,41 @@ export default () => {
                 </li>
             </ul>
 
+            {/*<StepsProvider>*/}
+            {/*    <StepsIndicator>*/}
+            {/*        <StepsIndicator.Item title="후보 선택" />*/}
+            {/*        <StepsIndicator.Item title="메세지 작성" />*/}
+            {/*        <StepsIndicator.Item title="전송" />*/}
+            {/*    </StepsIndicator>*/}
+
+            {/*    <Steps>*/}
+            {/*        <Steps.Step>*/}
+            {/*        {({next}) => (*/}
+            {/*            <div>*/}
+            {/*                선택*/}
+            {/*                <button onClick={() => next()}>다음</button>*/}
+            {/*            </div>*/}
+            {/*        )}*/}
+            {/*        </Steps.Step>*/}
+            {/*        <Steps.Step>*/}
+            {/*        {({next, prev}) => (*/}
+            {/*            <div>*/}
+            {/*                메세지*/}
+            {/*                <button onClick={() => prev()}>이전</button>*/}
+            {/*                <button onClick={() => next()}>다음</button>*/}
+            {/*            </div>*/}
+            {/*        )}*/}
+            {/*        </Steps.Step>*/}
+            {/*        <Steps.Step>*/}
+            {/*        {() => (*/}
+            {/*            <div>*/}
+            {/*               완료*/}
+            {/*            </div>*/}
+            {/*        )}*/}
+            {/*        </Steps.Step>*/}
+            {/*    </Steps>*/}
+            {/*</StepsProvider>*/}
+
             <div>
                 <Tabs>
                     <TabList>
@@ -139,7 +175,7 @@ export default () => {
                     </TabPanel>
                     <TabPanel>
                         <div className={style.input}>
-                            <FindByParty onSelect={party => fetchCandidates.byParty(party)}/>
+                            <FindByParty onSelect={party => fetchCandidates.byParty(party)} />
                         </div>
                         <div className={style.input}>
                             <FindByName onSubmit={name => fetchCandidates.byName(name)} />
