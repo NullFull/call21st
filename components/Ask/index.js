@@ -157,37 +157,37 @@ export default () => {
             {/*    </Steps>*/}
             {/*</StepsProvider>*/}
 
-            <div>
-                <Tabs>
-                    <TabList>
-                        <Tab>지역구 후보 검색</Tab>
-                        <Tab>비례대표 후보 검색</Tab>
-                    </TabList>
+            {/*<div>*/}
+            {/*    <Tabs>*/}
+            {/*        <TabList>*/}
+            {/*            <Tab>지역구 후보 검색</Tab>*/}
+            {/*            <Tab>비례대표 후보 검색</Tab>*/}
+            {/*        </TabList>*/}
 
-                    <TabPanel>
-                        <div className={style.input}>
-                            <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)} />
-                        </div>
-                        <div className={style.input}>
-                            <FindByName onSubmit={name => fetchCandidates.byName(name)} />
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                        <div className={style.input}>
-                            <FindByParty onSelect={party => fetchCandidates.byParty(party)} />
-                        </div>
-                        <div className={style.input}>
-                            <FindByName onSubmit={name => fetchCandidates.byName(name)} />
-                        </div>
-                    </TabPanel>
-                </Tabs>
-            </div>
+            {/*        <TabPanel>*/}
+            {/*            <div className={style.input}>*/}
+            {/*                <FindByRegion onSelect={(city, region) => fetchCandidates.byRegion(city, region)} />*/}
+            {/*            </div>*/}
+            {/*            <div className={style.input}>*/}
+            {/*                <FindByName onSubmit={name => fetchCandidates.byName(name)} />*/}
+            {/*            </div>*/}
+            {/*        </TabPanel>*/}
+            {/*        <TabPanel>*/}
+            {/*            <div className={style.input}>*/}
+            {/*                <FindByParty onSelect={party => fetchCandidates.byParty(party)} />*/}
+            {/*            </div>*/}
+            {/*            <div className={style.input}>*/}
+            {/*                <FindByName onSubmit={name => fetchCandidates.byName(name)} />*/}
+            {/*            </div>*/}
+            {/*        </TabPanel>*/}
+            {/*    </Tabs>*/}
+            {/*</div>*/}
 
-            <div>
-                <CandidatesContext.Provider value={{ candidates, status, actions }}>
-                    <Candidates />
-                </CandidatesContext.Provider>
-            </div>
+            {/*<div>*/}
+            {/*    <CandidatesContext.Provider value={{ candidates, status, actions }}>*/}
+            {/*        <Candidates />*/}
+            {/*    </CandidatesContext.Provider>*/}
+            {/*</div>*/}
 
             <div>
                 <button className={style.ask} disabled={true}>지금은 질문을 보낼 수 없습니다.</button>
