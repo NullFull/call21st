@@ -1,7 +1,6 @@
 import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import './tabstyle.styl'
-import { StepsProvider, StepsIndicator, Steps } from 'components/lib/Steps'
 import FindByName from 'components/Ask/FindByName'
 import FindByRegion from 'components/Ask/FindByRegion'
 import FindByParty from 'components/Ask/FindByParty'
